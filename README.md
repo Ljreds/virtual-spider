@@ -43,8 +43,8 @@ For this deliverable I built out the structure of my application using HTML.
 - [] **Links** - The login page automatically links to the game page. The menu in the navigation will link to each page.
 - [] **3rd party API placeholder** - Goat will speak new quotes when entering the page.
 - [] **Text** - Score page names, quotes, headers will be displayed with text
-- [] **Images** - Pixel art goat image which will represent the game character
-- [] **Login placeholder** - Placeholder for auth on the login page.
+- [x] **Images** - Pixel art goat image which will represent the game character
+- [x] **Login placeholder** - Placeholder for auth on the login page.
 - [] **DB data placeholder** - High scores displayed on scores page.
 - [] **WebSocket** - Highscore message would be broadcasted to all clients via the websocket
-- [] **GitHub Page** - Link to my github page
+- [x] **GitHub Page** - Link to my github page
