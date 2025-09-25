@@ -39,12 +39,12 @@ I am going to use the required technologies in the following ways:
 
 For this deliverable I built out the structure of my application using HTML.
 
-- [] **HTML pages** - Three HTML page that represent the ability to login, play the game, and display highscores
+- [x] **HTML pages** - Three HTML page that represent the ability to login, play the game, and display highscores
 - [x] **Links** - The login page automatically links to the game page. The menu in the navigation will link to each page.
-- [x] **3rd party API placeholder** - Goat will speak new quotes when entering the page.
+- [x] **3rd party API placeholder** - A placeholder for waht the goat will speak new quotes when entering the page.
 - [x] **Text** - Score page names, quotes, headers will be displayed with text
 - [x] **Images** - Pixel art goat image which will represent the game character
 - [x] **Login placeholder** - Placeholder for auth on the login page.
-- [] **DB data placeholder** - High scores displayed on scores page.
+- [x] **DB data placeholder** - High scores displayed on scores page.
 - [x] **WebSocket** - Highscore message would be broadcasted to all clients via the websocket
 - [x] **GitHub Page** - Link to my github page
