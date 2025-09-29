@@ -15,3 +15,14 @@ main {
     align-items: center;
     justify-content: space-around;
 }
+
+footer {
+    flex: 0 30px;
+}
+
+menu {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}

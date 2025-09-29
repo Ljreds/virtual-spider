@@ -9,11 +9,18 @@
 
     <link rel="stylesheet" href="main.css" />
 
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+
 </head>
 <body>
-    <header>
+    <header class="container-fluid">
         <h1>Madamfo</h1>
-        <nav>
+        <nav class="navbar fixed-top navbar-dark">
             <menu>
                 <li><a href ="index.html"> Home </a></li>
                 <li><a href="game.html">Play</a></li>
@@ -24,25 +31,26 @@
 
     <hr />
     <main>
-        <h1>Akwaaba</h1>
-        <div>
+        <div class = "game-title">
+            <h1>Akwaaba</h1>
             <img src="jungle.png" alt="pixel art jungle" height="200" />
         </div>
-        
-        <form action="game.html" method = "get">
-            <div>
-                <label for="login"> Username: </label>
-                <input type="text" id="login" placeholder="Your name here">
-            </div>
-            <div>
-                <label for="password"> Password; </label>
-                <input type="password" id="password" placeholder="password">
-            </div>
-            <div>
-                <button type="submit">Login</button>
-                <button type="submit">Signup</button>
-            </div>
-        </form>
+        <div class = "login-page">
+            <form action="game.html" method = "get">
+                <div>
+                    <label for="login"> Username: </label>
+                    <input type="text" id="login" placeholder="Your name here">
+                </div>
+                <div>
+                    <label for="password"> Password; </label>
+                    <input type="password" id="password" placeholder="password">
+                </div>
+                <div>
+                    <button type="submit">Login</button>
+                    <button type="submit">Signup</button>
+                </div>
+            </form>
+        </div>
     </main>
     <hr />
 </body>
