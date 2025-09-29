@@ -48,3 +48,16 @@ For this deliverable I built out the structure of my application using HTML.
 - [x] **DB data placeholder** - High scores displayed on scores page.
 - [x] **WebSocket** - Highscore message would be broadcasted to all clients via the websocket
 - [x] **GitHub Page** - Link to my github page
+
+## CSS deliverable
+
+For this deliverable I properly styled the application into its final appearance.
+
+- [ ] **Header, footer, and main content body**
+- [ ] **Navigation elements** - Navigation elements are styled and responive to user input
+- [ ] **Responsive to window resizing** - My app looks great on all window sizes and devices
+- [ ] **Application elements** - Used good contrast and whitespace
+- [ ] **Application text content** - Consistent fonts
+- [ ] **Application images** - Images are scaled and animated(If necessary)
+- [ ] **Text Bubble** The text bubble for my quote is added
+
