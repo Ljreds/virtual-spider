@@ -6,7 +6,9 @@ body {
 
 header {
     flex: 0 80px;
-    background-color: #50d1e4;
+    background: fixed;
+    background-color: #34656D;
+    flex-direction: row !important;
 }
 
 main {
@@ -26,10 +28,12 @@ menu {
     display: flex;
     flex-direction: row !important;
     list-style: none;
+    background-color: #FAEAB1;
 }
 
-.nav {
+.navbar-brand {
   padding-left: 0.3em;
+  
 }
 
 menu .nav-item {
