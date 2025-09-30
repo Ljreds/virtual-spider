@@ -15,7 +15,7 @@ main {
    flex: 1;
    display:block;
    flex-direction: unset;
-   background-color: #84994F;
+   background-color: #115230;
 }
 
 footer {
@@ -71,7 +71,7 @@ menu .nav-item {
 .right {
     flex: 1;
     display: grid;
-    background-color: #84994F;
+    background-color: #115230;
     place-content: center;
     margin-bottom: 300px;
 
@@ -94,6 +94,9 @@ menu .nav-item {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.btn {
+  margin-right: 10px;
 }
 
 footer a {
