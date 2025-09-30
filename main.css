@@ -7,16 +7,12 @@ body {
 header {
     flex: 0 80px;
     background: fixed;
-    background-color: #34656D;
+    background-color: #B45253;
     flex-direction: row !important;
 }
 
 main {
-    flex: 1 calc(100vh - 200px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+   
 }
 
 footer {
@@ -28,7 +24,7 @@ menu {
     display: flex;
     flex-direction: row !important;
     list-style: none;
-    background-color: #FAEAB1;
+    background-color: #FCB53B;
 }
 
 .navbar-brand {
@@ -40,10 +36,34 @@ menu .nav-item {
   padding: 0 0.3em;
 }
 
+.split {
+    display: flex;
+    height: 100vh;
+}
+
+.left {
+    flex: 1;
+    background: url(jungle.png);
+}
+
+.right {
+    flex: 1;
+    background-color: #84994F;
+}
+
 footer a {
   float: right;
-  background-color: #34656D;
+  background-color: #B45253;
 
+}
+
+h1 {
+    font-family: Tribeca;
+}
+
+@font-face {
+    font-family: 'Tribeca';
+    src: url("Tribeca.ttf");
 }
 
 @media (max-height: 600px) {
