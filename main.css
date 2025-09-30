@@ -18,7 +18,9 @@ main {
 }
 
 footer {
-    flex: 0 30px;
+  flex: 0 30px;
+  background-color: #B45253;
+
 }
 
 
@@ -36,7 +38,12 @@ menu {
 
 menu .nav-item {
   padding: 0 0.3em;
-  font-family:fantasy;
+  font-family: Tribeca;
+}
+
+.nav-link.active {
+  color: green !important;
+  font-weight: bold;
 }
 
 .split {
@@ -63,22 +70,38 @@ menu .nav-item {
     display: grid;
     background-color: #84994F;
     place-content: center;
+    margin-bottom: 300px;
 
 }
 
 #login-title {
   margin-top: 50px;
+  margin-bottom: 2px;
   font-size: 5em;
   color: #B45253;
 }
 
+#login-subtitle {
+  font-size: 3em;
+  color: #B45253;
+  text-align: center;
+}
+
+#login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 footer a {
   float: right;
-  background-color: #B45253;
 
 }
 
 h1 {
+    font-family: Tribeca;
+}
+h2 {
     font-family: Tribeca;
 }
 
