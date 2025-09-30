@@ -17,41 +17,44 @@
     />
 
 </head>
-<body class="bg-light text-dark">
+<body class="bg-dark text-light">
     <header class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="madamfo.png" alt="Madamfo" width="70" height="56" />
-        </a>
-        <nav class="navbar fixed-top navbar-light">
-            <menu class="navbar-brand">
-                <li class="nav-item"><a class="nav-link active" href="index.html"> Home </a></li>
-                <li class="nav-item"><a class="nav-link" href="game.html">Play</a></li>
-                <li class="nav-item"><a class="nav-link" href="score.html">Scoreboard</a></li>
+        <nav class="nav fixed-top nav-dark">
+            <a class="nav" href="#">
+                <img class src="madamfo.png" alt="Madamfo" width="150" />
+            </a>
+            <menu class="nav nav-pills">
+                <li class="nav-item mt-2"><a class="nav-link active" href="index.html"> Home </a></li>
+                <li class="nav-item mt-2"><a class="nav-link" href="game.html">Play</a></li>
+                <li class="nav-item mt-2"><a class="nav-link" href="score.html">Scoreboard</a></li>
             </menu>
         </nav>
     </header>
 
-    <hr />
-    <main>
-        <div class = "game-title">
-            <h1>Akwaaba</h1>
-            <img src="jungle.png" alt="pixel art jungle" height="200" />
-        </div>
-        <div class = "login-page">
-            <form action="game.html" method = "get">
-                <div>
-                    <label for="login"> Username: </label>
-                    <input type="text" id="login" placeholder="Your name here">
-                </div>
-                <div>
-                    <label for="password"> Password; </label>
-                    <input type="password" id="password" placeholder="password">
-                </div>
-                <div>
-                    <button type="submit">Login</button>
-                    <button type="submit">Signup</button>
-                </div>
-            </form>
+
+    <main class="container-fluid">
+        <div class="row align-items-start">
+            <div class = "col">
+                
+                <img src="jungle.png" alt="pixel art jungle" height="600" />
+            </div>
+            <div class = "col">
+                <h1>Akwaaba</h1>
+                <form action="game.html" method = "get">
+                    <div>
+                        <label for="login"> Username: </label>
+                        <input type="text" id="login" placeholder="Your name here">
+                    </div>
+                    <div>
+                        <label for="password"> Password; </label>
+                        <input type="password" id="password" placeholder="password">
+                    </div>
+                    <div>
+                        <button type="submit">Login</button>
+                        <button type="submit">Signup</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </main>
     <hr />
