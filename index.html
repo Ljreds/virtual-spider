@@ -34,23 +34,21 @@
 
     <main class="container-fluid">
         <div class="split">
-            <div class ="left">
-                <h1 id="main-title">My Friend Goat</h1>
-            </div>
+            <div class ="left"></div>
             <div class = "right">
-                <h1>Akwaaba</h1>
+                <h1 id="login-title">Akwaaba</h1>
                 <form action="game.html" method = "get">
-                    <div>
-                        <label for="login"> Username: </label>
-                        <input type="text" id="login" placeholder="Your name here">
+                    <div class="input-group mb-3">
+                        <label for="login" class="input-group-text">Username: </label>
+                        <input type="text" id="login" placeholder="Your name here" class="form-control">
                     </div>
-                    <div>
-                        <label for="password"> Password: </label>
-                        <input type="password" id="password" placeholder="password">
+                    <div class="input-group mb-3">
+                        <label for="password" class="input-group-text">Password: </label>
+                        <input type="password" id="password" placeholder="Password" class="form-control">
                     </div>
-                    <div>
-                        <button type="submit">Login</button>
-                        <button type="submit">Signup</button>
+                    <div class="login-button">
+                        <button type="submit" class="btn btn-primary" >Login</button>
+                        <button type="submit" class="btn btn-secondary">Signup</button>
                     </div>
                 </form>
             </div>

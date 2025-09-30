@@ -66,6 +66,12 @@ menu .nav-item {
 
 }
 
+#login-title {
+  margin-top: 50px;
+  font-size: 5em;
+  color: #B45253;
+}
+
 footer a {
   float: right;
   background-color: #B45253;
