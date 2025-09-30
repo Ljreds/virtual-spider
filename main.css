@@ -5,10 +5,11 @@ body {
 }
 
 header {
-    flex: 0 80px;
-    background-color: #B45253;
-    flex-direction: row !important;
+  flex: 0 80px;
+  background-color: #B45253;
+  height: 5em;
 }
+
 
 main {
    flex: 1;
@@ -32,6 +33,7 @@ menu {
     background-color: #FCB53B;
 }
 
+
 .navbar-brand {
   padding-left: 0.3em;
 }
@@ -39,6 +41,7 @@ menu {
 menu .nav-item {
   padding: 0 0.3em;
   font-family: Tribeca;
+
 }
 
 .nav-link.active {
