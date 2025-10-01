@@ -31,29 +31,38 @@
     </header>
 
     <hr />
-    <main>
-        <div class="highscore-message">
-            <p id="username">Smith has achieved the highscore <output id="score">999999</output></p>
+    <main class="text-white">
+        <div class="row">
+            <div class="col speech-bubble">
+                <p id="quote">"With great power comes great responsibility." - Uncle Ben </p>
+            </div>
+
+            <div class="col highscore-message">
+                <p id="username">Smith has achieved the highscore <output id="score">999999</output></p>
+            </div>
         </div>
 
-        <div class="speech-bubble">
-            <p id="quote">"With great power comes great responsibility." - Uncle Ben </p>
-        </div>
+       
+        <div class="row justify-content-md-center"><p class="col-md-auto">Happiness: <output id="score">999999</output></p></div>
 
-        <p>Happiness: <output id="score">999999</output></p>
+        <div class="row justify-content-md-center">
+            <div class="col">
+                <label for="hunger-meter">Hunger</label>
+                <meter id="hunger-meter" value="40" min="0" max="100"></meter>
+            </div>
 
-        <div class="avatar"><img src="goat.png" alt="Aponkye(goat)" width="300" height="275" /></div>
+            <div class="col avatar"><img src="goat.png" alt="Aponkye(goat)" width="300" height="275" /></div>
 
-        <div>
-            <label for="hunger-meter">Hunger</label>
-            <meter id="hunger-meter" value="40" min="0" max="100"></meter>
+            <div class ="col">
+                <label for="dirty-meter">Dirt</label>
+                <meter id="dirty-meter" value="40" min="0" max="100"></meter>
+            </div>
         </div>
-        <div>
-            <label for="dirty-meter">Dirt</label>
-            <meter id="dirty-meter" value="40" min="0" max="100"></meter>
+        <div class="row">
+            <button class="col" type="button">Feed</button>
+            <button class="col" type="button">Brush</button>
         </div>
-        <button type="button">Feed</button>
-        <button type="button">Brush</button>
+        
 
     </main>
 </body>
