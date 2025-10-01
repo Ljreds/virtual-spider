@@ -1,17 +1,19 @@
-.progress {
-  width: 300px;
-  height: 25px;
+.game-meter {
+  width: 25px;
+  height: 200px;
   background: #e0e0e0;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
-  border: 1px solid #aaa;
+  border: 1px solid blue;
+  display: flex;
+  align-items: flex-end; 
 }
 
-.progress-fill {
-  height: 100%;
-  width: 0;
-  background: linear-gradient(45deg, #4caf50 25%, #66bb6a 25%, #66bb6a 50%, #4caf50 50%, #4caf50 75%, #66bb6a 75%);
-  background-size: 40px 40px; /* size of stripes */
+.meter-fill {
+  height: 60%;
+  width: 100%;
+  background: linear-gradient(to top, #4caf50, #2e7d32);
   border-radius: inherit;
-  transition: width 0.4s ease;
+  transition: height 0.4s ease;
+  
 }
