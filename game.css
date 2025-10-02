@@ -5,7 +5,7 @@ main {
 }
 
 .highscore-message {
-  padding: 3px 30px;
+  padding: 5px 30px;
   background: linear-gradient(to right, #4caf50, #2e7d32);
   display: flex;
   justify-self: end;
@@ -13,13 +13,17 @@ main {
   border-radius: 8px;
   border-style: solid;
   width: fit-content;
-  border-color: darkgreen;
+  border-color: black;
+  font-size: 18px;
+
 }
 
 #high-score {
+  padding: 3px 2px;
   margin-left: 40px;
   border-left-style: solid;
-  border-color: darkgreen;
+  border-color: black;
+  justify-self: end;
 }
 
   .speech-bubble {
@@ -28,18 +32,19 @@ main {
     color: black;
     padding: 15px;
     border-radius: 10px;
-    width: 200px;         /* fixed width */
+    width: 250px;         /* fixed width */
     line-height: 1.4;
     word-wrap: break-word;
     justify-self: center;
-    left: 100px;
+    left: 70px;
+    top: 50px;
   }
 
   .speech-bubble::after {
     content: "";
     position: absolute;
     bottom: -20px;
-    left: 150px;
+    left: 170px;
     border-width: 10px;
     border-style: solid;
     border-color: white transparent transparent transparent;
