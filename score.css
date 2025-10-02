@@ -1,6 +1,7 @@
 main {
   margin-top: 5em; /* same as header height */
   padding: 20px;
+  background-color: #115230;
 }
 
 #score-board {
