@@ -67,6 +67,7 @@ main {
 
 .avatar {
   transform: scaleX(-1);
+  float: center;
 }
 
 .game-meter {

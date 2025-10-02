@@ -1,0 +1,30 @@
+main {
+  margin-top: 5em; /* same as header height */
+  padding: 20px;
+  height: 100vh;
+}
+
+#score-board {
+    display: flexbox;
+    justify-self: center;
+    border-radius: 20px;
+    background-color: #ff9800;
+    font-family: Arcade;
+    font-size: 40px;
+    height: fit-content;
+}
+
+thead {
+    background-color: #ff6f61;
+    border-style: solid 3px;
+    border-color: black;
+}
+
+th, td {
+  padding: 10px;
+}
+
+@font-face {
+  font-family: Arcade;
+  src: url("fonts/Arcade.TTF");
+}
