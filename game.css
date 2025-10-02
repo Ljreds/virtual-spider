@@ -15,15 +15,16 @@ main {
   width: fit-content;
   border-color: black;
   font-size: 18px;
-
+  font-family: fantasy;
 }
 
 #high-score {
-  padding: 3px 2px;
+  padding: 2px 10px;
   margin-left: 40px;
   border-left-style: solid;
   border-color: black;
-  justify-self: end;
+  font-family: Talks;
+  font-size: 20px;
 }
 
   .speech-bubble {
@@ -36,8 +37,9 @@ main {
     line-height: 1.4;
     word-wrap: break-word;
     justify-self: center;
-    left: 70px;
+    left: 50px;
     top: 50px;
+    font-family: fantasy;
   }
 
   .speech-bubble::after {
@@ -116,7 +118,11 @@ main {
 }
 
 
+@font-face {
+  font-family: Talks;
+  src: url("fonts/Talks.ttf");
 
+}
 
 @font-face {
   font-family: Arcade;
