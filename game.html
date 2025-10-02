@@ -18,8 +18,8 @@
 
 </head>
 <body class="text-dark">
-   <header class="container-fluid">
-            <nav class="navbar fixed-top navbar-light">
+ <header class="container-fluid fixed-top">
+            <nav class="navbar navbar-light">
                 <a class="navbar-brand" href="#">
                     <img id="title-bar" src="madamfo.png" alt="Madamfo" height="100" />
                 </a>
@@ -31,15 +31,19 @@
             </nav>
     </header>
 
-    <hr />
     <main class="text-white">
         <div class="row">
-            <div class="col speech-bubble">
-                <p id="quote">"With great power comes great responsibility." - Uncle Ben </p>
+            <div class="col">
+                <div class="speech-bubble">
+                    <p id="quote">"With great power comes great responsibility." - Uncle Ben </p>
+                </div>
             </div>
 
-            <div class="col highscore-message">
-                <p id="username">Smith has achieved the highscore <output id="score">999999</output></p>
+            <div class="col">
+                <div class="highscore-message">
+                    <div><span id="username">Smith has achieved the highscore</span></div>
+                    <div><output id="high-score">999999</output></div>
+                </div>
             </div>
         </div>
 

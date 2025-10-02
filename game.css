@@ -1,14 +1,64 @@
 
+main {
+  margin-top: 5em; /* same as header height */
+  padding: 20px;
+}
+
+.highscore-message {
+  padding: 3px 30px;
+  background: linear-gradient(to right, #4caf50, #2e7d32);
+  display: flex;
+  justify-self: end;
+  text-align: end;
+  border-radius: 8px;
+  border-style: solid;
+  width: fit-content;
+  border-color: darkgreen;
+}
+
+#high-score {
+  margin-left: 40px;
+  border-left-style: solid;
+  border-color: darkgreen;
+}
+
+  .speech-bubble {
+    position: relative;
+    background: white;
+    color: black;
+    padding: 15px;
+    border-radius: 10px;
+    width: 200px;         /* fixed width */
+    line-height: 1.4;
+    word-wrap: break-word;
+    justify-self: center;
+    left: 100px;
+  }
+
+  .speech-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 150px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+  }
+
 
 .score-container {
   font-family: Arcade;
   font-size: 40px;
   color:#ff6f61;
-  margin: 20px;
 }
 
 #score {
   margin-left: 30px;
+  color:#ff9800
+}
+
+.avatar {
+  transform: scaleX(-1);
 }
 
 .game-meter {
