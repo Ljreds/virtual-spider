@@ -44,11 +44,15 @@
         </div>
 
        
-        <div class="row justify-content-md-center"><p class="col-md-auto">Happiness: <output id="score">999999</output></p></div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <p class="score-container">Happiness: <output id="score">999999</output></p>
+            </div>
+        </div>
 
         <div class="row">
-            <div class="hunger-meter col">
-                <div class="meter-container">
+            <div class=" col">
+                <div class="meter-container justify-content-end">
                     <span class="meter-name">Hunger</span>
                     <div class="game-meter">
                         <div class="meter-fill"></div>
@@ -56,7 +60,7 @@
                 </div>
             </div>
 
-            <div class="col avatar"><img src="goat.png" alt="Aponkye(goat)" width="500" /></div>
+            <div class="col avatar"><img src="goat.png" alt="Aponkye(goat)" width="544" /></div>
 
             <div class ="col">
                 <div class="meter-container">
@@ -69,8 +73,9 @@
             </div>
         </div>
         <div class="row">
-            <button class="col game-button" type="button">Feed</button>
-            <button class="col game-button" type="button">Brush</button>
+            <div class="col feed-btn"><button class="game-button" type="button">Feed</button></div>
+            <div class="col"></div>
+            <div class="col"><button class="game-button" type="button">Brush</button></div>
         </div>
         
 

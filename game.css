@@ -1,3 +1,16 @@
+
+
+.score-container {
+  font-family: Arcade;
+  font-size: 40px;
+  color:#ff6f61;
+  margin: 20px;
+}
+
+#score {
+  margin-left: 30px;
+}
+
 .game-meter {
   width: 40px;
   height: 400px;
@@ -19,17 +32,38 @@
   
 }
 
-.hunger-meter {
-  justify-items: end;
-}
-
 .meter-name {
-  font-size: 20px;
-  font-family: fantasy;
+  font-size: 30px;
+  font-family: Arcade;
+  color:#ff6f61;
   writing-mode: vertical-rl;
   text-orientation: upright;
 }
 
 .meter-container {
   display: flex;
+  margin: 30px;
+  margin-top: 70px;
+}
+
+.game-button {
+  padding: 10px 40px;
+  background: linear-gradient(to top, #ff6f61, #ff9800);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.feed-btn {
+  display: flex;
+  justify-content: end;
+}
+
+
+
+
+@font-face {
+  font-family: Arcade;
+  src: url("fonts/Arcade.TTF");
 }

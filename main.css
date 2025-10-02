@@ -113,7 +113,7 @@ h2 {
 
 @font-face {
     font-family: 'Tribeca';
-    src: url("Tribeca.ttf");
+    src: url("fonts/Tribeca.ttf");
 }
 
 @media (max-height: 600px) {
