@@ -66,7 +66,8 @@ For this deliverable I properly styled the application into its final appearance
 For this deliverable I port my html and css elements over to react
 
 - [x] **Bundled using Vite** - Installed and Configure vite
-- [] **Components** - I have three components: login, play, and scores
-- [] **Router** - Routing between login, play, and scores components.
-- [] **login** - When you press enter or the login button it takes you to the voting page.
+- [x] **Rearrange folders** - 
+- [] **Components** - I have three components: login, game, and scores
+- [] **Router** - Routing between login, game, and scores components.
+- [] **login** - When you press enter or the login button it takes you to the game page.
 - [] **Bundled and transpiled** - done!
