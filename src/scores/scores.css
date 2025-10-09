@@ -1,13 +1,13 @@
 
 
 #score-board {
-    display: flexbox;
+    margin-top: 3em;
+    display: grid;
     justify-self: center;
     border-radius: 20px;
     background-color: #ff9800;
     font-family: Arcade;
     font-size: 40px;
-    height: fit-content;
 }
 
 thead {

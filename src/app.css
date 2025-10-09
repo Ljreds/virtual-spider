@@ -12,7 +12,7 @@ header {
 
 
 main {
-   flex: 1 calc(100vh - 110px);
+   flex: 1 calc(100vh - 30px);
    display: flexbox;
    flex-direction: column;
    background-color: #115230;
@@ -22,7 +22,6 @@ main {
 footer {
   flex: 0 30px;
   background-color: #B45253;
-
 }
 
 
@@ -73,7 +72,7 @@ h2 {
     display: none;
   }
   footer {
-    display: none;
+    display: flexbox;
   }
   main {
     flex: 1 100vh;

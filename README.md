@@ -70,4 +70,4 @@ For this deliverable I port my html and css elements over to react
 - [x] **Components** - I have three components: login, game, and scores
 - [x] **Router** - Routing between login, game, and scores components.
 - [x] **login** - When you press enter or the login button it takes you to the game page.
-- [] **Bundled and transpiled** - done!
+- [x] **Bundled and transpiled** - done!
