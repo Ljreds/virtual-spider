@@ -6,7 +6,7 @@
 
 .left {
     flex: 1;
-    background: url(jungle.png);
+    background: url(/jungle.png);
     text-align: center;
 }
 

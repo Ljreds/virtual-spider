@@ -118,16 +118,16 @@
 
 @font-face {
   font-family: Talks;
-  src: url("fonts/Talks.ttf");
+  src: url("/fonts/Talks.ttf");
 
 }
 
 @font-face {
     font-family: 'Tribeca';
-    src: url("fonts/Tribeca.ttf");
+    src: url("/fonts/Tribeca.ttf");
 }
 
 @font-face {
   font-family: Arcade;
-  src: url("fonts/Arcade.TTF");
+  src: url("/fonts/Arcade.TTF");
 }

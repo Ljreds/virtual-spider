@@ -22,5 +22,5 @@ th, td {
 
 @font-face {
   font-family: Arcade;
-  src: url("fonts/Arcade.TTF");
+  src: url("/fonts/Arcade.TTF");
 }
