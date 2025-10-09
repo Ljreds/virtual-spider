@@ -1,0 +1,49 @@
+.split {
+    display: flex;
+    height: 100vh;
+    flex-direction: row;    
+}
+
+.left {
+    flex: 1;
+    background: url(jungle.png);
+    text-align: center;
+}
+
+#main-title {
+  margin-top: 50px;
+  font-size: 5em;
+  color: #3A6F43;
+}
+
+
+.right {
+    flex: 1;
+    display: grid;
+    background: linear-gradient(to bottom right, #006400, #00a152, #76ff03);
+    place-content: center;
+    height: auto;
+
+}
+
+#login-title {
+  margin-top: 50px;
+  margin-bottom: 2px;
+  font-size: 5em;
+  color: #B45253;
+}
+
+#login-subtitle {
+  font-size: 3em;
+  color: #B45253;
+  text-align: center;
+}
+
+#login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn {
+  margin-right: 10px;
+}

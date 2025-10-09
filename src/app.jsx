@@ -10,16 +10,28 @@ import { Scores } from './scores/scores';
 export default function App() {
   return ( 
     <BrowserRouter>
-        <div className="body bg-dark text-dark">A
+        <div className="body text-dark">
             <header className="container-fluid fixed-top">
                 <nav className="navbar navbar-light">
                     <a className="navbar-brand" href="#">
                         <img id="title-bar" src="madamfo.png" alt="Madamfo" height="100" />
                     </a>
                     <menu className="navbar-brand">
-                        <li className="nav-item"><NavLink className="nav-link" to=""> Home </NavLink></li>
-                        <li className="nav-item"><NavLink className="nav-link" to="game">Play</NavLink></li>
-                        <li className="nav-item"><NavLink className="nav-link" to="scores">Scoreboard</NavLink></li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="">
+                                Home 
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="game">
+                                Play
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="scores">
+                                Scoreboard
+                            </NavLink>
+                        </li>
                     </menu>
                 </nav>
             </header>

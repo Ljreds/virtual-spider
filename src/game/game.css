@@ -1,12 +1,4 @@
 
-main {
-  margin-top: 5em; /* same as header height */
-  padding: 20px;
-  background-color: #115230;
-
-}
-
-
 .highscore-message {
   padding-left: 8px;
   background: linear-gradient(to right, #4caf50, #2e7d32);
