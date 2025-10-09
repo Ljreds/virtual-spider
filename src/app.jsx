@@ -2,6 +2,11 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { Login } from './login/login';
+import { Game } from './game/game';
+import { Scores } from './scores/scores';
+
 export default function App() {
   return ( 
   <div className="body bg-dark text-light">A
