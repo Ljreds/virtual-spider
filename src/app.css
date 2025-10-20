@@ -13,7 +13,7 @@ header {
 
 main {
    flex: 1 calc(100vh - 30px);
-   display: flexbox;
+   display: flex;
    flex-direction: column;
    background-color: #115230;
    padding-top: 6em;
@@ -73,8 +73,5 @@ h2 {
   }
   footer {
     display: flexbox;
-  }
-  main {
-    flex: 1 100vh;
   }
 }

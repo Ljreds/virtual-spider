@@ -1,4 +1,11 @@
 
+
+.game {
+  flex: 1;
+  display: grid;
+}
+
+
 .highscore-message {
   padding-left: 8px;
   background: linear-gradient(to right, #4caf50, #2e7d32);
