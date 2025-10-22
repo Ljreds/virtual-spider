@@ -21,6 +21,34 @@ Using Let's Encrypt, and the IETF standard ACME protocol anyone can dynamically 
 Caddy uses Let's Encrypt to generate a web certificate every time a HTTPS request is made for a domain name that Caddy doesn't have a web certificate for.
 
 
+## DNS
+
+| Port    | Protocol                   |
+| ------- | -------------------------- |
+| **443** | HTTPS (secure web traffic) |
+| **80**  | HTTP (regular web traffic) |
+| **22**  | SSH (secure shell access)  |
+
+# Command console
+
+| Command | Purpose                                                                 |
+| ------- | ----------------------------------------------------------------------- |
+| `chmod` | Change file or directory **permissions**                                |
+| `pwd`   | Print current **working directory**                                     |
+| `cd`    | **Change directory**                                                    |
+| `ls`    | **List** files and directories                                          |
+| `vim`   | Open file in **Vim text editor**                                        |
+| `nano`  | Open file in **Nano text editor**                                       |
+| `mkdir` | **Make a directory**                                                    |
+| `mv`    | **Move or rename** files/directories                                    |
+| `rm`    | **Remove (delete)** files/directories                                   |
+| `man`   | Show **manual/help** page for a command                                 |
+| `ssh`   | Start a **remote shell session** (secure connection to another machine) |
+| `ps`    | Show running **processes**                                              |
+| `wget`  | **Download** files from the web via URL                                 |
+| `sudo`  | Run a command with **superuser (admin)** privileges                     |
+
+
 # HTML
 
 ## Structure
@@ -63,6 +91,18 @@ Input element
 
 
 
+# CSS
+Box model
+Order (inner → outer):
+
+Content — the text, image, or other element’s actual data
+
+Padding — space between content and the border
+
+Border — wraps around the padding (and content)
+
+Margin — space outside the border, separating from other elements
+
 # Javascript
 
 ## Console
@@ -85,6 +125,39 @@ Counts how many times a block of code is called
 console.count('a') // a: 1
 console.count('a')// a: 2
 ```
+
+## DOM
+getElementById()
+
+Document Object Model is an object representation of the HTML elements. The browser provides access to the DOM through a global variable name `document`. 
+
+### Accessing the DOM
+querySelectorAll('p')
+el.tagName
+el.children
+
+### Modifying the DOM
+
+new =document.createElement
+
+new.textContent = text;
+
+parentElement.appendChild(new)
+
+function deleteElement(elementSelector) {
+  const el = document.querySelector(elementSelector);
+  el.parentElement.removeChild(el);
+}
+
+deleteElement('#courses div');
+
+### Injecting
+
+const el = document.querySelector('div');
+el.innerHTML = '<div class="injected"><b>Hello</b>!</div>';
+
+### Event listeners
+
 
 
 ## Functions
