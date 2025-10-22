@@ -6,8 +6,14 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Game } from './game/game';
 import { Scores } from './scores/scores';
+import { AuthState } from './login/authState';
 
 export default function App() {
+
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+  const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+  const [authState, setAuthState] = React.useState(currentAuthState);
+
   return ( 
     <BrowserRouter>
         <div className="body text-dark">
@@ -17,27 +23,43 @@ export default function App() {
                         <img id="title-bar" src="madamfo.png" alt="Madamfo" height="100" />
                     </a>
                     <menu className="navbar-brand">
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="">
-                                Home 
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="game">
-                                Play
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="scores">
-                                Scoreboard
-                            </NavLink>
-                        </li>
+                        {authState === AuthState.Unauthenticated && (
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="">
+                                    Home 
+                                </NavLink>
+                            </li>
+                        )}
+                        {authState === AuthState.Authenticated && (
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="game">
+                                    Play
+                                </NavLink>
+                            </li>
+                        )}
+                        {authState === AuthState.Authenticated && (
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="scores">
+                                    Scoreboard
+                                </NavLink>
+                            </li>
+                        )}
                     </menu>
                 </nav>
             </header>
 
             <Routes>
-                <Route path='/' element={<Login />} exact />
+                <Route path='/' element={<Login
+                    userName={userName}
+                    authState={authState}
+                    onAuthChange={(userName, authState) => {
+                    setAuthState(authState);
+                    setUserName(userName);
+                    }}
+                />
+                } 
+                exact 
+                />
                 <Route path='/game' element={<Game />} />
                 <Route path='/scores' element={<Scores />} />
                 <Route path='*' element={<NotFound />} />

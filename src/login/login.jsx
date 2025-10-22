@@ -14,9 +14,8 @@ class User{
 }
 
 
-export function Login() {
+export function Login(userName, authState, onAuthChange) {
 
-    const [userName, setUserName] = React.useState('');
     const [password, setPassword] = React.useState('');
 
 
