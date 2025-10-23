@@ -14,6 +14,11 @@ export default function App() {
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
 
+  async function logoutUser() {
+    localStorage.removeItem('userName');
+    onAuthChange(userName,  AuthState.Unauthenticated)
+  }
+
   return ( 
     <BrowserRouter>
         <div className="body text-dark">
@@ -27,6 +32,13 @@ export default function App() {
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="">
                                     Home 
+                                </NavLink>
+                            </li>
+                        )}
+                        {authState === AuthState.Authenticated && (
+                            <li className="nav-item">
+                                <NavLink className="nav-link" onClick={() => logoutUser()} to="login">
+                                    Logout
                                 </NavLink>
                             </li>
                         )}
@@ -60,7 +72,7 @@ export default function App() {
                 } 
                 exact 
                 />
-                <Route path='/game' element={<Game />} />
+                <Route path='/game' element={<Game userName={userName} />} />
                 <Route path='/scores' element={<Scores />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>

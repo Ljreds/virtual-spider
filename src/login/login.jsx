@@ -16,6 +16,7 @@ class User{
 
 export function Login(userName, authState, onAuthChange) {
 
+    const [userName, setUserName] = React.useState(userName);
     const [password, setPassword] = React.useState('');
 
 
@@ -23,12 +24,14 @@ export function Login(userName, authState, onAuthChange) {
     const user = new User(userName, password);
     const json = JSON.stringify(user);
     localStorage.setItem('userName', json);
+    onAuthChange(userName,  AuthState.Authenticated)
   }
 
   async function signUp() {
     const user = new User(userName, password);
     const json = JSON.stringify(user);
     localStorage.setItem('userName', json);
+    onAuthChange(userName,  AuthState.Authenticated)
   }
 
   return (
