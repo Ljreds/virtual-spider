@@ -2,6 +2,7 @@ import React from 'react';
 import './login.css';
 
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 
 class User{
@@ -14,9 +15,10 @@ class User{
 }
 
 
-export function Login(userName, authState, onAuthChange) {
+export function Login(username, authState, onAuthChange) {
+    const navigate = useNavigate();
 
-    const [userName, setUserName] = React.useState(userName);
+    const [userName, setUserName] = React.useState(username);
     const [password, setPassword] = React.useState('');
 
 
@@ -24,14 +26,16 @@ export function Login(userName, authState, onAuthChange) {
     const user = new User(userName, password);
     const json = JSON.stringify(user);
     localStorage.setItem('userName', json);
-    onAuthChange(userName,  AuthState.Authenticated)
+    onAuthChange(userName,  authState.Authenticated)
+    navigate('/game');
   }
 
   async function signUp() {
     const user = new User(userName, password);
     const json = JSON.stringify(user);
     localStorage.setItem('userName', json);
-    onAuthChange(userName,  AuthState.Authenticated)
+    onAuthChange(userName,  authState.Authenticated)
+    navigate('/game');
   }
 
   return (

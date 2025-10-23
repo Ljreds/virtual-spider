@@ -2,6 +2,9 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
+import { useNavigate } from 'react-router-dom';
+
+
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Game } from './game/game';
@@ -16,7 +19,8 @@ export default function App() {
 
   async function logoutUser() {
     localStorage.removeItem('userName');
-    onAuthChange(userName,  AuthState.Unauthenticated)
+    setAuthState(AuthState.Unauthenticated);
+    setUserName('');
   }
 
   return ( 
@@ -37,7 +41,7 @@ export default function App() {
                         )}
                         {authState === AuthState.Authenticated && (
                             <li className="nav-item">
-                                <NavLink className="nav-link" onClick={() => logoutUser()} to="login">
+                                <NavLink className="nav-link" onClick={() => logoutUser()} to="/">
                                     Logout
                                 </NavLink>
                             </li>
@@ -72,7 +76,7 @@ export default function App() {
                 } 
                 exact 
                 />
-                <Route path='/game' element={<Game userName={userName} />} />
+                <Route path='/game' element={<Game/>} />
                 <Route path='/scores' element={<Scores />} />
                 <Route path='*' element={<NotFound />} />
             </Routes>
