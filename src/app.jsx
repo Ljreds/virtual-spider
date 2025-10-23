@@ -2,7 +2,6 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
-import { useNavigate } from 'react-router-dom';
 
 
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
@@ -11,19 +10,11 @@ import { Game } from './game/game';
 import { Scores } from './scores/scores';
 import { AuthState } from './login/authState';
 
-export default function App() {
-
-    
+function App() {
 
   const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
-
-  React.useEffect(() => {
-    const storedUserName = localStorage.getItem('userName') || '';
-    setUserName(storedUserName);
-    setAuthState(storedUserName ? AuthState.Authenticated : AuthState.Unauthenticated);
-  }, []);
 
   async function logoutUser() {
     localStorage.removeItem('userName');
@@ -43,7 +34,7 @@ export default function App() {
                         {authState === AuthState.Unauthenticated && (
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="">
-                                    Home 
+                                    Login
                                 </NavLink>
                             </li>
                         )}
@@ -74,7 +65,7 @@ export default function App() {
 
             <Routes>
                 <Route path='/' element={<Login
-                    userName={userName}
+                    initialUserName={userName}
                     authState={authState}
                     onAuthChange={(userName, authState) => {
                     setAuthState(authState);
@@ -103,3 +94,5 @@ export default function App() {
 function NotFound() {
   return <main className="container-fluid bg-secondary text-center">404: Return to sender. Address unknown.</main>;
 }
+
+export default App;
