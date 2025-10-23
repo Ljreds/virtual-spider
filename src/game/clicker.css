@@ -87,7 +87,6 @@
 }
 
 .meter-fill {
-  height: 60%;
   width: 100%;
   background: linear-gradient(to top, #4caf50, #2e7d32);
   border-radius: inherit;
