@@ -5,35 +5,22 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 
 
-class User{
-    constructor(name, password) {
-        this.username = name;
-        this.password = password;
 
-    }
-
-}
-
-
-export function Login(username, authState, onAuthChange) {
+export function Login({initialUserName, authState, onAuthChange}) {
     const navigate = useNavigate();
 
-    const [userName, setUserName] = React.useState(username);
+    const [userName, setUserName] = React.useState(initialUserName || '');
     const [password, setPassword] = React.useState('');
 
 
   async function loginUser() {
-    const user = new User(userName, password);
-    const json = JSON.stringify(user);
-    localStorage.setItem('userName', json);
+    localStorage.setItem('userName', userName);
     onAuthChange(userName,  authState.Authenticated)
     navigate('/game');
   }
 
   async function signUp() {
-    const user = new User(userName, password);
-    const json = JSON.stringify(user);
-    localStorage.setItem('userName', json);
+    localStorage.setItem('userName', userName);
     onAuthChange(userName,  authState.Authenticated)
     navigate('/game');
   }
