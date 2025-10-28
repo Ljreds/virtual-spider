@@ -6,13 +6,16 @@ import Button from 'react-bootstrap/Button';
 
 export function Clicker(props) {
 
+    const userName = props.userName;
+    let highScore = 0;
+
     const [sate, setSate] = React.useState(0);
     const [sateMult, setSateMult] = React.useState(20);
 
-    const [dirt, setDirt] = React.useState(50);
+    const [dirt, setDirt] = React.useState(0);
 
     const [score, setScore] = React.useState(0);
-    const [mod, setModifier] = React.useState(1);
+    const [mod, setModifier] = React.useState(2);
     const [cost, setCost] = React.useState(5);
 
     const clamp = v => Math.max(0, Math.min(100, v));
@@ -24,21 +27,48 @@ export function Clicker(props) {
         }
     }
 
+    function userScore(){
+        setScore(s => s + mod)
+        if(score > highScore){
+            highScore = score
+            saveScore(highScore)
+        }
+    }
+
+    function saveScore(score) {
+        const newScore = {name: userName, score: score}
+
+        
+    }
+
+    const dirtRef = React.useRef(dirt);
+    React.useEffect(() => { dirtRef.current = dirt; }, [dirt]);
+
 
     React.useEffect(() => {
-        if(sate === 100){
+        if(sate >= 100){
             console.log('sate reached 100');
             setModifier(m => m * 2);
             setSate(0);
             setSateMult(m => m - 1);
             setCost(c => c + 5);
         }
-    });
+    }, [sate]);
 
     React.useEffect(() => {
         const id = setInterval(() => {
             setDirt(d => clamp(d + 2));
         }, 1000)
+        return () => clearInterval(id);
+    }, []);
+
+    React.useEffect(() => {
+        const id = setInterval(() => {
+            const currentDirt = dirtRef.current;
+            if(currentDirt >= 50){
+                setScore(s => Math.max(0, Math.floor(s - (dirt - 50)/10)));
+            }
+        }, 2000)
         return () => clearInterval(id);
     }, []);
 
@@ -80,7 +110,7 @@ export function Clicker(props) {
                 </div>
 
                 <div className="col avatar">
-                    <img src="goat.png" alt="Aponkye(goat)" width="544" onClick= {() => setScore(s => s + mod)} style={{cursor: 'pointer'}}/>
+                    <img src="goat.png" alt="Aponkye(goat)" width="544" onClick= {() => userScore()} style={{cursor: 'pointer'}}/>
                 </div>
 
                 <div className ="col">
@@ -101,7 +131,7 @@ export function Clicker(props) {
                 </div>
                 <div className="col"></div>
                 <div className="col">
-                    <Button className="game-button" type="button" onClick={() => setDirt(d => clamp(dirt - 2))}>
+                    <Button className="game-button" type="button" onClick={() => setDirt(d => clamp(dirt - 5))}>
                         Brush
                     </Button>
                 </div>
