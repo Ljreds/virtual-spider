@@ -10,10 +10,20 @@ export function Clicker(props) {
     const [sateMult, setSateMult] = React.useState(20);
 
     const [dirt, setDirt] = React.useState(50);
+
     const [score, setScore] = React.useState(0);
     const [mod, setModifier] = React.useState(1);
+    const [cost, setCost] = React.useState(5);
 
     const clamp = v => Math.max(0, Math.min(100, v));
+
+    function transaction() {
+        if(score - cost > 0){
+            setSate(h => clamp(sate + sateMult));
+            setScore(m => m - cost);
+        }
+    }
+
 
     React.useEffect(() => {
         if(sate === 100){
@@ -21,6 +31,7 @@ export function Clicker(props) {
             setModifier(m => m * 2);
             setSate(0);
             setSateMult(m => m - 1);
+            setCost(c => c + 5);
         }
     });
 
@@ -84,7 +95,7 @@ export function Clicker(props) {
             </div>
             <div className="row">
                 <div className="col feed-btn">
-                    <Button className="game-button" type="button"  onClick={() => setSate(h => clamp(sate + sateMult))}>
+                    <Button className="game-button" type="button"  onClick={() => transaction()}>
                         Feed
                     </Button>
                 </div>
