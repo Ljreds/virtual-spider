@@ -16,7 +16,6 @@ main {
    display: flex;
    flex-direction: column;
    background-color: #115230;
-   padding-top: 6em;
 }
 
 footer {
@@ -67,7 +66,7 @@ h2 {
     src: url("/fonts/Tribeca.ttf");
 }
 
-@media (max-height: 600px) {
+@media (max-height: 200px) {
   header {
     display: none;
   }

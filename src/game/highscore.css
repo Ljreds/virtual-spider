@@ -1,7 +1,10 @@
+
+
+
 .highscore-message {
   padding-left: 8px;
   background: linear-gradient(to right, #4caf50, #2e7d32);
-  display: flex;
+  display:flex;
   justify-self: end;
   overflow: hidden;
   border-radius: 8px;
