@@ -22,7 +22,7 @@ export function Clicker(props) {
 
     function transaction() {
         if(score - cost > 0){
-            setSate(h => clamp(sate + sateMult));
+            setSate(h => clamp(h + sateMult));
             setScore(m => m - cost);
         }
     }
@@ -47,8 +47,8 @@ export function Clicker(props) {
 
         let found = false;
         for (const [i, prevScore] of scores.entries()) {
-            if (newScore.score > prevScore.score) {
-                scores.splice(i, 0, newScore);
+            if (newScore.name = prevScore.name) {
+                scores[i] = newScore;
                 found = true;
                 break;
             }
@@ -61,6 +61,8 @@ export function Clicker(props) {
         if (scores.length > 10) {
         scores.length = 10;
         }
+
+        scores.sort((a,b) => b.score - a.score);
 
         localStorage.setItem('scores', JSON.stringify(scores));
 
@@ -91,7 +93,7 @@ export function Clicker(props) {
         const id = setInterval(() => {
             const currentDirt = dirtRef.current;
             if(currentDirt >= 50){
-                setScore(s => Math.max(0, Math.floor(s - (dirt - 50)/10)));
+                setScore(s => Math.max(0, Math.floor(s - (currentDirt - 50)/10)));
             }
         }, 2000)
         return () => clearInterval(id);
