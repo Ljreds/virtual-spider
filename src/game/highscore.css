@@ -1,0 +1,24 @@
+.highscore-message {
+  padding-left: 8px;
+  background: linear-gradient(to right, #4caf50, #2e7d32);
+  display: flex;
+  justify-self: end;
+  overflow: hidden;
+  border-radius: 8px;
+  border-style: solid;
+  width: fit-content;
+  border-color: black;
+  font-size: 18px;
+  font-family: Tribeca;
+}
+
+#high-score {
+  padding: 2px 10px;
+  margin-left: 40px;
+  border-left-style: solid;
+  border-color: #4caf50;
+  border-radius: 8%;
+  font-family: Talks;
+  font-size: 24px;
+  color:#ff9800
+}

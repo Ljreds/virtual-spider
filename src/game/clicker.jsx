@@ -104,22 +104,6 @@ export function Clicker(props) {
   return (
    <main className="container-fluid text-white">
         <div className="game">
-            <div className="row">
-                <div className="col">
-                    <div className="speech-bubble">
-                        <p id="quote">"With great power comes great responsibility." - Uncle Ben </p>
-                    </div>
-                </div>
-
-                <div className="col">
-                    <div className="highscore-message">
-                        <div><span id="username">Smith has achieved the highscore</span></div>
-                        <div id="high-score"><output >999999</output></div>
-                    </div>
-                </div>
-            </div>
-
-        
             <div className="row justify-content-md-center">
                 <div className="col-md-auto">
                     <p className="score-container">Happiness: <output id="score">{score}</output></p>
