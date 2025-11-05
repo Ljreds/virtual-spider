@@ -1,7 +1,7 @@
 
 
 .game {
-  flex: 1;
+  flex: 1 calc(100vh - 30px);
   display: grid;
 }
 
@@ -17,6 +17,7 @@
 }
 
 .avatar {
+  display: flex;
   transform: scaleX(-1);
   float: center;
 }
@@ -35,6 +36,7 @@
 }
 
 .meter-fill {
+  display: flex;
   width: 100%;
   background: linear-gradient(to top, #4caf50, #2e7d32);
   border-radius: inherit;
@@ -62,6 +64,11 @@
   border: none;
   border-radius: 6px;
   margin-bottom: 20px;
+}
+
+.dirt-btn {
+  display: flex;
+
 }
 
 .feed-btn {

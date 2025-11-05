@@ -7,7 +7,7 @@ import { Clicker } from './clicker';
 
 export function Game(props) {
   return (
-    <main className='bg-secondary'>
+    <main>
       <Message />
       <Highscore />
       <Clicker userName={props.userName} />

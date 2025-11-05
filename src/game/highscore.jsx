@@ -20,15 +20,18 @@ export function Highscore(props) {
         return event;
     };
 
+    const highscore = [];
+    if(event.length) {
+        <div className="highscore-message">
+            <div><span id="username">No one has achieved the highscore</span></div>
+            <div id="message-score"><span > 0</span></div>
+        </div>
+    }
+
 
   return (
-    <div className="row">
-        <div className = "col">
-            <div className="highscore-message">
-                <div><span id="username">No one has achieved the highscore</span></div>
-                <div id="message-score"><span > 0</span></div>
-            </div>
+        <div className = "col highscore">
+            
         </div>
-    </div>
   );
 }

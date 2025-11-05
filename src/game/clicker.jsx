@@ -9,10 +9,11 @@ import { GameNotifier } from './gameNotifier';
 export function Clicker(props) {
 
     const userName = props.userName;
-    let highScore = 0;
 
     const [sate, setSate] = React.useState(0);
     const [sateMult, setSateMult] = React.useState(20);
+
+    const [highscore, setHighscore] =React.useState(0);
 
     const [dirt, setDirt] = React.useState(0);
 
@@ -31,9 +32,9 @@ export function Clicker(props) {
 
     function userScore(){
         setScore(s => s + mod)
-        if(score > highScore){
-            highScore = score
-            saveScore(highScore)
+        if(score > highscore){
+            setHighscore(score);
+            saveScore(score);
         }
     }
 
@@ -147,7 +148,7 @@ export function Clicker(props) {
                     </Button>
                 </div>
                 <div className="col"></div>
-                <div className="col">
+                <div className="col dirt-btn">
                     <Button className="game-button" type="button" onClick={() => setDirt(d => clamp(dirt - 5))}>
                         Brush
                     </Button>

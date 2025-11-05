@@ -1,11 +1,11 @@
 .speech-bubble {
     position: relative;
-    display: inline-flex;
+    display: flex;
     background: white;
     color: black;
     padding: 15px;
     border-radius: 10px;
-    width: 250px;        
+    width: 200px;        
     line-height: 1.4;
     word-wrap: break-word;
     justify-self: center;

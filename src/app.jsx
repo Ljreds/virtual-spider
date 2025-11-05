@@ -18,6 +18,7 @@ function App() {
 
   async function logoutUser() {
     localStorage.removeItem('userName');
+    localStorage.removeItem('scores')
     setAuthState(AuthState.Unauthenticated);
     setUserName('');
   }

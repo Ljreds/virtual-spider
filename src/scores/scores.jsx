@@ -3,12 +3,35 @@ import './scores.css';
 
 export function Scores() {
 
+    const [scores, setScores] = React.useState([])
+
     React.useEffect(() => {
         const scoresText = localStorage.getItem('scores');
         if (scoresText) {
-        setScores(JSON.parse(scoresText));
+            setScores(JSON.parse(scoresText));
         }
     }, []);
+
+    const scoreRows = [];
+    if(scores.length) {
+        for (const [i, score] of scores.entries()) {
+            scoreRows.push(
+                <tr key={i}>
+                    <td style={{textAlign: "center"}}>{i + 1}</td>
+                    <td style={{textAlign: "left"}}>{score.name}</td>
+                    <td style={{textAlign: "right"}}>{score.score}</td>
+                </tr>
+            );
+        }
+
+    } else {
+    scoreRows.push(
+      <tr key='0'>
+        <td colSpan='4'>Be the first to score</td>
+      </tr>
+    );
+  }
+
 
   return (
      <main className="container-fluid">
@@ -21,21 +44,7 @@ export function Scores() {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td style={{textAlign: "center"}}>1</td>
-                    <td style={{textAlign: "left"}}>Smith</td>
-                    <td style={{textAlign: "right"}}>999999</td>
-                </tr>
-                <tr>
-                    <td style={{textAlign: "center"}}>2</td>
-                    <td style={{textAlign: "left"}}>Joey</td>
-                    <td style={{textAlign: "right"}}>002399</td>
-                </tr>
-                <tr>
-                    <td style={{textAlign: "center"}}>3</td>
-                    <td style={{textAlign: "left"}}>webmaster</td>
-                    <td style={{textAlign: "right"}}>000001</td>
-                </tr>
+                {scoreRows}
             </tbody>
         </table>
     </main>
