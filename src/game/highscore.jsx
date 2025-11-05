@@ -5,7 +5,7 @@ import { GameNotifier } from './gameNotifier';
 
 export function Highscore(props) {
     
-    const [event, setEvent] = React.useState([]);
+    const [events, setEvent] = React.useState([]);
 
     React.useEffect(() => {
         GameNotifier.addHandler(handleGameEvent);
@@ -21,17 +21,20 @@ export function Highscore(props) {
     };
 
     const highscore = [];
-    if(event.length) {
-        <div className="highscore-message">
-            <div><span id="username">No one has achieved the highscore</span></div>
-            <div id="message-score"><span > 0</span></div>
-        </div>
+    if(events.length) {
+        for(const [i, event] of events.entries()){highscore.push(
+            <div className="highscore-message">
+                <div><span id="username">{event.name} has achieved the highscore</span></div>
+                <div id="message-score"><span >{event.score}</span></div>
+            </div>
+            )
+        }
     }
 
 
   return (
         <div className = "col highscore">
-            
+            {highscore}
         </div>
   );
 }
