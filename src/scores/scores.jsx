@@ -2,6 +2,14 @@ import React from 'react';
 import './scores.css';
 
 export function Scores() {
+
+    React.useEffect(() => {
+        const scoresText = localStorage.getItem('scores');
+        if (scoresText) {
+        setScores(JSON.parse(scoresText));
+        }
+    }, []);
+
   return (
      <main className="container-fluid">
         <table id="score-board">

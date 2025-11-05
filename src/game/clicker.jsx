@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { use } from 'react';
 import './clicker.css';
 
 import Button from 'react-bootstrap/Button';
+
+import { GameNotifier } from './gameNotifier';
 
 
 export function Clicker(props) {
@@ -60,6 +62,10 @@ export function Clicker(props) {
 
         if (scores.length > 10) {
         scores.length = 10;
+        }
+
+        if(newScore.score > scores[0].score) {
+            GameNotifier.broadcastEvent(userName, newScore.score)
         }
 
         scores.sort((a,b) => b.score - a.score);
