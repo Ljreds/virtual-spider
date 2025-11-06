@@ -31,11 +31,14 @@ export function Clicker(props) {
     }
 
     function userScore(){
-        setScore(s => s + mod)
-        if(score > highscore){
-            setHighscore(score);
-            saveScore(score);
-        }
+        setScore(prev => {const updated = prev + mod
+            if(score >= highscore){
+                setHighscore(updated);
+                saveScore(updated);
+            }
+
+            return updated;
+        })
     }
 
     function saveScore(score) {
@@ -50,7 +53,7 @@ export function Clicker(props) {
 
         let found = false;
         for (const [i, prevScore] of scores.entries()) {
-            if (newScore.name = prevScore.name) {
+            if (newScore.name === prevScore.name) {
                 scores[i] = newScore;
                 found = true;
                 break;
@@ -65,7 +68,7 @@ export function Clicker(props) {
         scores.length = 10;
         }
 
-        if(newScore.score > scores[0].score) {
+        if(newScore.score > scores[0].score || scores.length === 1) {
             GameNotifier.broadcastEvent(userName, newScore.score)
         }
 
@@ -82,7 +85,7 @@ export function Clicker(props) {
     React.useEffect(() => {
         if(sate >= 100){
             console.log('sate reached 100');
-            setModifier(m => m * 2);
+            setModifier(m => m + 10);
             setSate(0);
             setSateMult(m => m - 1);
             setCost(c => c + 5);

@@ -1,8 +1,8 @@
 
 class EventMessage {
-  constructor(name, value) {
+  constructor(name, score) {
     this.name = name;
-    this.value = value;
+    this.score = score;
   }
 }
 
@@ -10,8 +10,8 @@ class GameEventNotifier {
   handlers = [];
   event = new EventMessage('No one', 0);
 
-  broadcastEvent(from, value) {
-    const event = new EventMessage(from, value);
+  broadcastEvent(name, score) {
+    const event = new EventMessage(name, score);
     this.receiveEvent(event);
   }
 
