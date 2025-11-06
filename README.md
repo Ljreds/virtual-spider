@@ -67,7 +67,15 @@ For this deliverable I port my html and css elements over to react
 
 - [x] **Bundled using Vite** - Installed and Configure vite
 - [x] **Rearrange folders** - 
-- [x] **Components** - I have three components: login, game, and scores
+- [x] **Components** - I have three components: login, game, and scores.
 - [x] **Router** - Routing between login, game, and scores components.
 - [x] **login** - When you press enter or the login button it takes you to the game page.
 - [x] **Bundled and transpiled** - done!
+
+## React Phase 2: Reactivity deliverable
+
+For this deliverable I used JavaScript and React so that the application completely works for a single user. I also added placeholders for future technology.
+
+- [x] **All functionality implemented** - Everything is working! Scores stored in local storage. `setInterval` used to create decay effect for the dirtiness.
+- [x] **Hooks** - Used `useState` and `useEffect` on the clicker.
+- [x] **Websocket and third party** - Mocked out.
