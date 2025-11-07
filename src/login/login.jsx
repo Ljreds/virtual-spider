@@ -15,15 +15,27 @@ export function Login({initialUserName, authState, onAuthChange}) {
 
 
   async function loginUser() {
-    localStorage.setItem('userName', userName);
-    onAuthChange(userName,  AuthState.Authenticated)
-    navigate('/game');
+    loginOrSignup('api/auth/login');
   }
 
   async function signUp() {
-    localStorage.setItem('userName', userName);
-    onAuthChange(userName,  AuthState.Authenticated)
-    navigate('/game');
+   loginOrSignup('api/auth/signup');
+  }
+
+  async function loginOrSignup(endpoint) {
+    const response = await fetch(endpoint, {
+      method: 'post',
+      body: JSON.stringify({username: userName, password: password}),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+
+      },
+    });
+    if (response?.status === 200) {
+      localStorage.setItem('userName', userName);
+      onAuthChange(userName,  AuthState.Authenticated);
+      navigate('/game');
+    }
   }
 
   return (
