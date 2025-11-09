@@ -17,11 +17,19 @@ function App() {
   const [authState, setAuthState] = React.useState(currentAuthState);
 
   async function logoutUser() {
-    localStorage.removeItem('userName');
-    localStorage.removeItem('scores')
-    setAuthState(AuthState.Unauthenticated);
-    setUserName('');
+    fetch('api/auth/logout', {
+        method: 'DELETE'
+    })
+        .then(res => {
+            if (!res.ok) throw new Error('Failed to delete user');
+            localStorage.removeItem('userName');
+            setAuthState(AuthState.Unauthenticated);
+              setUserName('');
+        })
+        .then(data => console.log('Deleted user:', data))
+        .catch(err => console.error(err));
   }
+  
 
   return ( 
     <BrowserRouter>

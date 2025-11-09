@@ -20,7 +20,7 @@ app.use(`/api`, apiRouter);
 app.use(express.static('public'));
 
 apiRouter.post('auth/signup', async (req, res) => {
-  if(await findUser('username', req.body.username)) {
+  if(await findUser('userName', req.body.username)) {
     res.status(409);
   }
 
@@ -31,7 +31,7 @@ apiRouter.post('auth/signup', async (req, res) => {
 });
 
 apiRouter.post('auth/login', async (req, res) => {
-  const user = await findUser('username', req.body.username);
+  const user = await findUser('userName', req.body.username);
   if(user) {
     if(await bcrypt.compare(req.body.password, user.password)){
       user.token = uuid.v4();
@@ -48,7 +48,7 @@ apiRouter.post('auth/login', async (req, res) => {
 });
 
 apiRouter.delete('auth/logout', async (req, res) => {
-  const user = await findUser('username', req.cookies[authCookieName]);
+  const user = await findUser('userName', req.cookies[authCookieName]);
   if(user) {
     delete user.token;
   }
@@ -58,17 +58,17 @@ apiRouter.delete('auth/logout', async (req, res) => {
 
 
 async function createUser(userName, password) {
-  const passwordHash = await bcrypt.hash(password);
+  const passwordHash = bcrypt.hash(password);
 
-  const user = {
+  const newUser = {
     userName: userName,
     password: passwordHash,
     token: uuid.v4(),
   }
 
-  users.push(user)
+  users.push(newUser)
 
-  return user;
+  return newUser;
 }
 
 async function findUser(field, name) {
