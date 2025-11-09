@@ -18,7 +18,7 @@ function App() {
 
   async function logoutUser() {
     fetch('api/auth/logout', {
-        method: 'DELETE'
+        method: 'delete'
     })
         .then(res => {
             if (!res.ok) throw new Error('Failed to delete user');
