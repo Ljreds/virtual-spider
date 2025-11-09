@@ -4,6 +4,8 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
 
+const authCookieName = 'token';
+
 let users = [];
 let scores = [];
 
@@ -18,12 +20,71 @@ app.use(`/api`, apiRouter);
 app.use(express.static('public'));
 
 apiRouter.post('auth/signup', async (req, res) => {
+  if(await findUser('username', req.body.username)) {
+    res.status(409);
+  }
+
+  const user = await createUser(req.body.username, req.body.password);
+  setAuthCookie(res, user.token);
+  res.send({userName: user.userName})
+
+});
+
+apiRouter.post('auth/login', async (req, res) => {
+  const user = await findUser('username', req.body.username);
+  if(user) {
+    if(await bcrypt.compare(req.body.password, user.password)){
+      user.token = uuid.v4();
+      setAuthCookie(res, user.token);
+      res.send({userName: user.userName});
+      return;
+    }
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+
+  setAuthCookie(res, user.token);
+  res.send({userName: user.userName})
+
+});
+
+apiRouter.delete('auth/logout', async (req, res) => {
+  const user = await findUser('username', req.cookies[authCookieName]);
+  if(user) {
+    delete user.token;
+  }
+  res.clearCookie(authCookieName)
+  res.status(204).end;
+});
 
 
+async function createUser(userName, password) {
+  const passwordHash = await bcrypt.hash(password);
+
+  const user = {
+    userName: userName,
+    password: passwordHash,
+    token: uuid.v4(),
+  }
+
+  users.push(user)
+
+  return user;
 }
-)
 
 async function findUser(field, name) {
-    
+    return users.find((u) => u[field] === name);
 }
 
+
+
+
+
+
+function setAuthCookie(res, authToken) {
+  res.cookie(authCookieName, authToken, {
+    maxAge: 1000 * 60 * 60 * 24 * 365,
+    secure: true,
+    httpOnly: true,
+    sameSite: 'strict',
+  });
+}
