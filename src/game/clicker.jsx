@@ -17,7 +17,7 @@ export function Clicker(props) {
 
     const [dirt, setDirt] = React.useState(0);
 
-    const [score, setScore] = React.useState(0);
+    const [score, setScore] = React.useState(localStorage.getItem('score') || 0);
     const [mod, setModifier] = React.useState(2);
     const [cost, setCost] = React.useState(5);
 
@@ -34,14 +34,16 @@ export function Clicker(props) {
         setScore(prev => {const updated = prev + mod
             if(score >= highscore){
                 setHighscore(updated);
-                saveScore(updated);
+                localStorage.setItem('score', updated);
             }
 
             return updated;
         })
     }
 
-    function saveScore(score) {
+    async function saveScore(score) {
+
+
         const newScore = {name: userName, score: score}
         
         let scores = [];

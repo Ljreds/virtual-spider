@@ -7,7 +7,7 @@ import { AuthState } from './authState';
 
 
 
-export function Login({initialUserName, authState, onAuthChange}) {
+export function Login({initialUserName, onAuthChange}) {
     const navigate = useNavigate();
 
     const [userName, setUserName] = React.useState(initialUserName);
@@ -15,11 +15,11 @@ export function Login({initialUserName, authState, onAuthChange}) {
 
 
   async function loginUser() {
-    loginOrSignup('api/auth/login');
+    loginOrSignup(`/api/auth/login`);
   }
 
   async function signUp() {
-   loginOrSignup('api/auth/signup');
+   loginOrSignup(`/api/auth/signup`);
   }
 
   async function loginOrSignup(endpoint) {
@@ -31,7 +31,7 @@ export function Login({initialUserName, authState, onAuthChange}) {
 
       },
     });
-    if (response?.status === 200) {
+    if (response.ok) {
       localStorage.setItem('userName', userName);
       onAuthChange(userName,  AuthState.Authenticated);
       navigate('/game');

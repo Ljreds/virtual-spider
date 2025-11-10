@@ -57,6 +57,10 @@ apiRouter.delete('/auth/logout', async (req, res) => {
   res.status(204).end();
 });
 
+apiRouter.post('/score', verifyAuth, async (req, res) => {
+  const user = await find
+})
+
 
 async function createUser(userName, password) {
   const passwordHash = await bcrypt.hash(password, 10);
@@ -89,3 +93,7 @@ function setAuthCookie(res, authToken) {
     sameSite: 'strict',
   });
 }
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
