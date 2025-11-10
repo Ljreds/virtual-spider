@@ -30,54 +30,26 @@ export function Clicker(props) {
         }
     }
 
-    function userScore(){
+    async function userScore(){
         setScore(prev => {const updated = prev + mod
             if(score >= highscore){
                 setHighscore(updated);
                 localStorage.setItem('score', updated);
+                checkForHighscore(updated);
             }
 
             return updated;
         })
     }
 
-    async function saveScore(score) {
+    async function checkForHighscore(score) {
+        const response = await fetch(`/api/highscore`, {
+            method: 'get'
+        });
 
-
-        const newScore = {name: userName, score: score}
-        
-        let scores = [];
-        const scoresText = localStorage.getItem('scores');
-        
-        if (scoresText) {
-        scores = JSON.parse(scoresText);
+        if(score > response) {
+            GameNotifier.broadcastEvent(userName, score);
         }
-
-        let found = false;
-        for (const [i, prevScore] of scores.entries()) {
-            if (newScore.name === prevScore.name) {
-                scores[i] = newScore;
-                found = true;
-                break;
-            }
-        }
-
-        if (!found) {
-        scores.push(newScore);
-        }
-
-        if (scores.length > 10) {
-        scores.length = 10;
-        }
-
-        if(newScore.score > scores[0].score || scores.length === 1) {
-            GameNotifier.broadcastEvent(userName, newScore.score)
-        }
-
-        scores.sort((a,b) => b.score - a.score);
-
-        localStorage.setItem('scores', JSON.stringify(scores));
-
     }
 
     const dirtRef = React.useRef(dirt);

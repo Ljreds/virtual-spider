@@ -62,6 +62,14 @@ apiRouter.post('/score', verifyAuth, async (req, res) => {
   res.send(scores);
 })
 
+apiRouter.get('/highscore', verifyAuth, async (req, res) => {
+  res.send(scores[0]);
+})
+
+apiRouter.get('/scores', verifyAuth, async (req, res) => {
+  res.send(scores);
+})
+
 
 const verifyAuth = async (req, res, next) => {
   const user = await findUser('token', req.cookies[authCookieName]);
