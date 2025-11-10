@@ -4,12 +4,17 @@ import './message.css'
 export function Message(props) {
 
   const [quote, setQuote] = React.useState('Loading...');
-  const [author, setAuthor] = React.useState('unknown');
+  const [movie, setMovie] = React.useState('unknown');
 
-  // We only want this to render the first time the component is created and so we provide an empty dependency list.
+
   React.useEffect(() => {
-    setQuote("With great power comes great responsibility.");
-    setAuthor('Uncle Ben');
+    fetch('https://quoteapi.pythonanywhere.com/quotes')
+        .then((response) => response.json())
+        .then((data) => {
+          setQuote(data.quote);
+          setMovie(data.movie_name);
+        })
+        .catch();
   }, []);
 
 
