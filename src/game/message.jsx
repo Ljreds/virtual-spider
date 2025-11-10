@@ -3,16 +3,14 @@ import './message.css'
 
 export function Message(props) {
 
-  const [quote, setQuote] = React.useState('Loading...');
-  const [movie, setMovie] = React.useState('unknown');
+  const [joke, setJoke] = React.useState('Loading...');
 
 
   React.useEffect(() => {
-    fetch('https://quoteapi.pythonanywhere.com/quotes')
+    fetch('https://geek-jokes.sameerkumar.website/api?format=json')
         .then((response) => response.json())
         .then((data) => {
-          setQuote(data.quote);
-          setMovie(data.movie_name);
+          setJoke(data.joke);
         })
         .catch();
   }, []);
@@ -21,7 +19,7 @@ export function Message(props) {
   return (
     <div className="row">
         <div className="col speech-bubble">
-            <p id="quote">{quote} - {author} </p>
+            <p id="quote">{joke} </p>
         </div>
         <div className="col"></div>
     </div>
