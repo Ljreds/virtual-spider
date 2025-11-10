@@ -58,8 +58,19 @@ apiRouter.delete('/auth/logout', async (req, res) => {
 });
 
 apiRouter.post('/score', verifyAuth, async (req, res) => {
-  const user = await find
+  scores = updateScores(req.body);
+  res.send(scores);
 })
+
+
+const verifyAuth = async (req, res, next) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  if (user) {
+    next();
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+};
 
 
 async function createUser(userName, password) {
@@ -80,6 +91,29 @@ async function findUser(field, name) {
     return users.find((u) => u[field] === name);
 }
 
+async function updateScores(score) {
+
+  let found = false;
+  if (scores.find((u) => u['userName'] === score.userName)){
+    scores.filter(u => u.userName !== score.userName)
+  }
+
+  for (const [i, prevScore] of scores.entries()) {
+    if (score.score > prevScore.score) {
+      scores.splice(i, 0, newScore);
+      found = true;
+      break;
+    }
+  }
+
+  if (!found) {
+    scores.push(newScore);
+  }
+
+  if (scores.length > 10) {
+    scores.length = 10;
+  }
+}
 
 
 
