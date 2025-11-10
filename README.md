@@ -79,3 +79,14 @@ For this deliverable I used JavaScript and React so that the application complet
 - [x] **All functionality implemented** - Everything is working! Scores stored in local storage. `setInterval` used to create decay effect for the dirtiness.
 - [x] **Hooks** - Used `useState` and `useEffect` on the clicker.
 - [x] **Websocket and third party** - Mocked out.
+
+## Service deliverable
+
+For this deliverable I added backend endpoints that receives votes and returns the voting totals.
+
+- [x] **Node.js/Express HTTP service** - Working
+- [x] **Static middleware for frontend** - Working
+- [x] **Calls to third party endpoints** - My goat tells a new joke every time the page is refreshed
+- [x] **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for storing scores
+- [x] **Frontend calls service endpoints** - I did this using the fetch function.
+- [x] **Supports registration, login, logout, and restricted endpoint** - Login and signup work with correct authentication
