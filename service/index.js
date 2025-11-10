@@ -9,6 +9,7 @@ const authCookieName = 'token';
 
 let users = [];
 let scores = [];
+let highscore = {highScore: 0};
 
 app.use(express.json());
 
@@ -57,20 +58,6 @@ apiRouter.delete('/auth/logout', async (req, res) => {
   res.status(204).end();
 });
 
-apiRouter.post('/score', verifyAuth, async (req, res) => {
-  scores = updateScores(req.body);
-  res.send(scores);
-})
-
-apiRouter.get('/highscore', verifyAuth, async (req, res) => {
-  res.send(scores[0]);
-})
-
-apiRouter.get('/scores', verifyAuth, async (req, res) => {
-  res.send(scores);
-})
-
-
 const verifyAuth = async (req, res, next) => {
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
@@ -80,6 +67,23 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
+apiRouter.post('/score', verifyAuth, (req, res) => {
+  updateScores(req.body) || scores;
+  res.send(scores);
+});
+
+
+apiRouter.get('/scores', verifyAuth, (_req, res) => {
+  res.send(scores);
+});
+
+apiRouter.get('/highscore', verifyAuth, (_req, res) => {
+  res.send(highscore);
+});
+
+app.use(function (err, req, res, next) {
+  res.status(500).send({ type: err.name, message: err.message });
+});
 
 async function createUser(userName, password) {
   const passwordHash = await bcrypt.hash(password, 10);
@@ -99,15 +103,20 @@ async function findUser(field, name) {
     return users.find((u) => u[field] === name);
 }
 
-async function updateScores(score) {
+async function updateScores(newScore) {
 
   let found = false;
-  if (scores.find((u) => u['userName'] === score.userName)){
-    scores.filter(u => u.userName !== score.userName)
+
+  const userScore = scores.find((u) => u.userName === newScore.userName);
+
+  if(userScore && userScore.score > newScore.score) {
+    return scores;
   }
+  
+  scores = scores.filter(u => u.userName !== newScore.userName)
 
   for (const [i, prevScore] of scores.entries()) {
-    if (score.score > prevScore.score) {
+    if (newScore.score > prevScore.score) {
       scores.splice(i, 0, newScore);
       found = true;
       break;
@@ -121,6 +130,10 @@ async function updateScores(score) {
   if (scores.length > 10) {
     scores.length = 10;
   }
+
+  highscore.highScore = scores[0].score;
+
+  return scores;
 }
 
 

@@ -6,11 +6,13 @@ export function Scores() {
     const [scores, setScores] = React.useState([])
 
     React.useEffect(() => {
-        const scoresText = localStorage.getItem('scores');
-        if (scoresText) {
-            setScores(JSON.parse(scoresText));
-        }
+        fetch(`/api/scores`)
+            .then((response) => response.json())
+            .then((scores) => {
+            setScores(scores);
+        });
     }, []);
+
 
     const scoreRows = [];
     if(scores.length) {
@@ -18,19 +20,13 @@ export function Scores() {
             scoreRows.push(
                 <tr key={i}>
                     <td style={{textAlign: "center"}}>{i + 1}</td>
-                    <td style={{textAlign: "left"}}>{score.name}</td>
+                    <td style={{textAlign: "left"}}>{score.userName}</td>
                     <td style={{textAlign: "right"}}>{score.score}</td>
                 </tr>
             );
         }
 
-    } else {
-    scoreRows.push(
-      <tr key='0'>
-        <td colSpan='4'>Be the first to score</td>
-      </tr>
-    );
-  }
+    }
 
 
   return (

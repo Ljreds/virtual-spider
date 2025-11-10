@@ -23,7 +23,7 @@ export function Highscore(props) {
     const highscore = [];
     if(events.length) {
         for(const [i, event] of events.entries()){highscore.push(
-            <div className="highscore-message">
+            <div className="highscore-message" key = {i} >
                 <div><span id="username">{event.name} has achieved the highscore</span></div>
                 <div id="message-score"><span >{event.score}</span></div>
             </div>

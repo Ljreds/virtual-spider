@@ -16,25 +16,17 @@ function App() {
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
 
-  async function saveScore() {
-    const newScore = {userName: userName, score: localStorage.getItem('score')}
-    fetch('api/score', {
-        method: 'post',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(newScore),
-    })
-  }
 
   async function logoutUser() {
-    await saveScore();
     fetch('api/auth/logout', {
         method: 'delete'
     })
         .then(res => {
             if (!res.ok) throw new Error('Failed to delete user');
             localStorage.removeItem('userName');
+            localStorage.removeItem('score');
             setAuthState(AuthState.Unauthenticated);
-              setUserName('');
+            setUserName('');
         })
         .then(data => console.log('Deleted user:', data))
         .catch(err => console.error(err));
@@ -75,7 +67,7 @@ function App() {
                         )}
                         {authState === AuthState.Authenticated && (
                             <li className="nav-item">
-                                <NavLink className="nav-link" onClick={() => saveScore()} to="scores">
+                                <NavLink className="nav-link" to="scores">
                                     Scoreboard
                                 </NavLink>
                             </li>

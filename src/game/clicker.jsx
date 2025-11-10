@@ -13,11 +13,11 @@ export function Clicker(props) {
     const [sate, setSate] = React.useState(0);
     const [sateMult, setSateMult] = React.useState(20);
 
-    const [highscore, setHighscore] =React.useState(0);
+    const [highscore, setHighscore] = React.useState(0);
 
     const [dirt, setDirt] = React.useState(0);
 
-    const [score, setScore] = React.useState(localStorage.getItem('score') || 0);
+    const [score, setScore] = React.useState(0);
     const [mod, setModifier] = React.useState(2);
     const [cost, setCost] = React.useState(5);
 
@@ -30,27 +30,39 @@ export function Clicker(props) {
         }
     }
 
+    async function saveScore(score) {
+        const newScore = {userName: userName, score: score}
+        fetch('api/score', {
+            method: 'post',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(newScore),
+        })
+    }
+
+    async function checkHighscore(newScore) {
+        fetch(`/api/highscore`)
+            .then((response) => response.json())
+            .then((highscore) => { 
+                if(newScore >= highscore.highScore) {
+                    GameNotifier.broadcastEvent(userName, newScore);
+                }
+        });
+    }
+
     async function userScore(){
         setScore(prev => {const updated = prev + mod
             if(score >= highscore){
                 setHighscore(updated);
                 localStorage.setItem('score', updated);
-                checkForHighscore(updated);
+                checkHighscore(updated);
+                saveScore(updated);
             }
 
             return updated;
         })
     }
 
-    async function checkForHighscore(score) {
-        const response = await fetch(`/api/highscore`, {
-            method: 'get'
-        });
-
-        if(score > response) {
-            GameNotifier.broadcastEvent(userName, score);
-        }
-    }
+   
 
     const dirtRef = React.useRef(dirt);
     React.useEffect(() => { dirtRef.current = dirt; }, [dirt]);
