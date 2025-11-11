@@ -22,7 +22,9 @@ app.use(express.static('public'));
 let apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-
+app.use((_req, res) => {
+  res.sendFile('index.htm', { root: 'public'});
+});
 
 apiRouter.post('/auth/signup', async (req, res) => {
   if(await findUser('userName', req.body.username)) {
