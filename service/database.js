@@ -7,6 +7,17 @@ const db = client.db('startup');
 const userDatabase = db.collection('users');
 const scoreDatabase = db.collection('scores');
 
+
+(async function testConnection() {
+  try {
+    await db.command({ ping: 1 });
+    console.log(`Connect to database`);
+  } catch (ex) {
+    console.log(`Unable to connect to database with ${url} because ${ex.message}`);
+    process.exit(1);
+  }
+})();
+
 async function setUser(user) {
     await userDatabase.insertOne(user);
 }
@@ -22,3 +33,11 @@ function findUserByToken(token) {
 async function updateUser(user) {
     await userDatabase.updateOne({userName: user.userName}, { $set: user })
 }
+
+
+module.exports = {
+  findUser,
+  findUserByToken,
+  setUser,
+  updateUser,
+};
