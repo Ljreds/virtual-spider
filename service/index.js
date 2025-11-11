@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
 const express = require('express');
 const app = express();
+const DB = require('./database.js');
 
 const authCookieName = 'token';
 
@@ -96,13 +97,16 @@ async function createUser(userName, password) {
     token: uuid.v4(),
   }
 
-  users.push(newUser)
+  await DB.setUser(newUser);
 
   return newUser;
 }
 
 async function findUser(field, name) {
-    return users.find((u) => u[field] === name);
+    if(field == token){
+      return DB.findUserByToken(name);
+    }
+    return DB.findUser(name);
 }
 
 async function updateScores(newScore) {
