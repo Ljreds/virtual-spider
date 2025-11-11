@@ -105,7 +105,7 @@ async function createUser(userName, password) {
 }
 
 async function findUser(field, name) {
-    if(field == token){
+    if(field === 'token'){
       return DB.findUserByToken(name);
     }
     return DB.findUser(name);
