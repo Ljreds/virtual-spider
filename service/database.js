@@ -30,8 +30,12 @@ function findUserByToken(token) {
     return userDatabase.findOne({token: token})
 }
 
+async function logoutUser(user) {
+    await userDatabase.updateOne({userName: user.userName}, { $set: {token: null} })
+}
+
 async function updateUser(user) {
-    await userDatabase.updateOne({userName: user.userName}, { $set: user })
+    await userDatabase.updateOne({userName: user.userName}, { $set: {token: user.token} })
 }
 
 
@@ -39,5 +43,6 @@ module.exports = {
   findUser,
   findUserByToken,
   setUser,
+  logoutUser,
   updateUser,
 };

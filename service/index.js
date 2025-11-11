@@ -43,6 +43,7 @@ apiRouter.post('/auth/login', async (req, res) => {
   if(user) {
     if(await bcrypt.compare(req.body.password, user.password)){
       user.token = uuid.v4();
+      await DB.updateUser(user);
       setAuthCookie(res, user.token);
       res.send({userName: user.userName});
       return;
@@ -53,11 +54,9 @@ apiRouter.post('/auth/login', async (req, res) => {
 });
 
 apiRouter.delete('/auth/logout', async (req, res) => {
-  const user = await findUser('userName', req.cookies[authCookieName]);
+  const user = await findUser('token', req.cookies[authCookieName]);
   if(user) {
-    delete user.token;
-    DB.updateUser(user)
-    
+    DB.logoutUser(user)
   }
   res.clearCookie(authCookieName)
   res.status(204).end();
@@ -78,11 +77,11 @@ apiRouter.post('/score', verifyAuth, (req, res) => {
 });
 
 
-apiRouter.get('/scores', verifyAuth, (_req, res) => {
+apiRouter.get('/scores', verifyAuth, (req, res) => {
   res.send(scores);
 });
 
-apiRouter.get('/highscore', verifyAuth, (_req, res) => {
+apiRouter.get('/highscore', verifyAuth, (req, res) => {
   res.send(highscore);
 });
 
@@ -105,10 +104,13 @@ async function createUser(userName, password) {
 }
 
 async function findUser(field, name) {
-    if(field === 'token'){
-      return DB.findUserByToken(name);
-    }
-    return DB.findUser(name);
+  if (!name) return null;
+
+  if (field === 'token'){
+    return DB.findUserByToken(name);
+  }
+
+  return DB.findUser(name);
 }
 
 async function updateScores(newScore) {
