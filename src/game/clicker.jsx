@@ -43,7 +43,7 @@ export function Clicker(props) {
         fetch(`/api/highscore`)
             .then((response) => response.json())
             .then((highscore) => { 
-                if(newScore >= highscore.highScore) {
+                if(newScore >= highscore.score) {
                     GameNotifier.broadcastEvent(userName, newScore);
                 }
         });

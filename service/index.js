@@ -81,7 +81,7 @@ apiRouter.get('/scores', verifyAuth, async (req, res) => {
 
 apiRouter.get('/highscore', verifyAuth, async (req, res) => {
   const highscore = await DB.findHighscore();
-  res.send(highscore);
+  res.send(highscore[0]);
 });
 
 app.use(function (err, req, res, next) {

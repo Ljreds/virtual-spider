@@ -53,7 +53,7 @@ function findScores() {
 }
 
 function findHighscore() {
-    return scoreDatabase.findOne({}, { sort: { score: -1}});
+    return scoreDatabase.find().sort({ score: -1 }).limit(1).toArray();
 }
 
 module.exports = {
