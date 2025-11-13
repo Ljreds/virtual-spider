@@ -38,16 +38,8 @@ async function updateUser(user) {
     await userDatabase.updateOne({userName: user.userName}, { $set: {token: user.token} })
 }
 
-async function setScore(score) {
-    await scoreDatabase.insertOne(score);
-}
-
 async function updateScore(score) {
-    await scoreDatabase.updateOne({userName: score.userName}, { $set: {score: score.score} });
-}
-
-function getScore(userName) {
-    return scoreDatabase.findOne({userName: userName})
+    await scoreDatabase.updateOne({userName: score.userName}, { $max: {score: score.score} }, {upsert: true});
 }
 
 function findScores() {
@@ -70,8 +62,6 @@ module.exports = {
   setUser,
   logoutUser,
   updateUser,
-  setScore,
-  getScore,
   findScores,
   updateScore,
   findHighscore,

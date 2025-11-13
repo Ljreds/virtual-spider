@@ -113,15 +113,7 @@ async function findUser(field, name) {
 }
 
 async function updateScores(newScore){
-  const userScore = DB.getScore(newScore.userName);
-
-  if(userScore && userScore.score > newScore.score) {
-    return DB.findScores();
-  }else if (userScore) {
-    DB.updateScore(newScore)
-  }else {
-     DB.setScore(newScore);
-  }
+  DB.updateScore(newScore)
   return DB.findScores();
 }
 
