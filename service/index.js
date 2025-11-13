@@ -74,13 +74,13 @@ apiRouter.post('/score', verifyAuth, (req, res) => {
 });
 
 
-apiRouter.get('/scores', verifyAuth, (req, res) => {
-  const scores = DB.findScores();
+apiRouter.get('/scores', verifyAuth, async (req, res) => {
+  const scores = await DB.findScores();
   res.send(scores);
 });
 
-apiRouter.get('/highscore', verifyAuth, (req, res) => {
-  const highscore = DB.findHighscore();
+apiRouter.get('/highscore', verifyAuth, async (req, res) => {
+  const highscore = await DB.findHighscore();
   res.send(highscore);
 });
 
