@@ -8,9 +8,6 @@ const DB = require('./database.js');
 
 const authCookieName = 'token';
 
-let users = [];
-let scores = [];
-let highscore = {highScore: 0};
 
 app.use(express.json());
 
@@ -78,11 +75,12 @@ apiRouter.post('/score', verifyAuth, (req, res) => {
 
 
 apiRouter.get('/scores', verifyAuth, (req, res) => {
-  const scores = DB.findScores()
+  const scores = DB.findScores();
   res.send(scores);
 });
 
 apiRouter.get('/highscore', verifyAuth, (req, res) => {
+  const highscore = DB.findHighscore();
   res.send(highscore);
 });
 

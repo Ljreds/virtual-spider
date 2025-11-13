@@ -60,6 +60,9 @@ function findScores() {
   return cursor.toArray();
 }
 
+function findHighscore() {
+    return scoreDatabase.findOne({}, { sort: { score: -1}});
+}
 
 module.exports = {
   findUser,
