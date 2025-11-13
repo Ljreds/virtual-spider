@@ -42,6 +42,10 @@ async function setScore(score) {
     await scoreDatabase.insertOne(score);
 }
 
+async function updateScore(score) {
+    await scoreDatabase.insertOne({userName: score.userName}, { $set: {score: score.score} });
+}
+
 function getScore(userName) {
     return scoreDatabase.findOne({userName: userName})
 }
@@ -66,5 +70,6 @@ module.exports = {
   setScore,
   getScore,
   findScores,
+  updateScore,
   findHighscore,
 };

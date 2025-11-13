@@ -78,6 +78,7 @@ apiRouter.post('/score', verifyAuth, (req, res) => {
 
 
 apiRouter.get('/scores', verifyAuth, (req, res) => {
+  const scores = DB.findScores()
   res.send(scores);
 });
 
@@ -118,9 +119,11 @@ async function updateScores(newScore){
 
   if(userScore && userScore.score > newScore.score) {
     return DB.findScores();
+  }else if (userScore) {
+    DB.updateScore(newScore)
   }
   
-  DB.addScore(newScore);
+  DB.setScore(newScore);
   return DB.findScores();
 }
 
