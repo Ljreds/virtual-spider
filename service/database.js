@@ -46,6 +46,16 @@ function getScore(userName) {
     return scoreDatabase.findOne({userName: userName})
 }
 
+function findScores() {
+    const query = { score: { $gt: 0, $lt: 900 } };
+        const options = {
+        sort: { score: -1 },
+        limit: 10,
+    };
+  const cursor = scoreCollection.find(query, options);
+  return cursor.toArray();
+}
+
 
 module.exports = {
   findUser,
@@ -54,4 +64,7 @@ module.exports = {
   logoutUser,
   updateUser,
   setScore,
+  getScore,
+  findScores,
+  findHighscore,
 };
