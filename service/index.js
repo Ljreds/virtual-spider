@@ -119,9 +119,9 @@ async function updateScores(newScore){
     return DB.findScores();
   }else if (userScore) {
     DB.updateScore(newScore)
+  }else {
+     DB.setScore(newScore);
   }
-  
-  DB.setScore(newScore);
   return DB.findScores();
 }
 

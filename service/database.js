@@ -43,7 +43,7 @@ async function setScore(score) {
 }
 
 async function updateScore(score) {
-    await scoreDatabase.insertOne({userName: score.userName}, { $set: {score: score.score} });
+    await scoreDatabase.updateOne({userName: score.userName}, { $set: {score: score.score} });
 }
 
 function getScore(userName) {
@@ -51,12 +51,12 @@ function getScore(userName) {
 }
 
 function findScores() {
-    const query = { score: { $gt: 0, $lt: 900 } };
+    const query = { score: { $gt: 0, $lt: 999999 } };
         const options = {
         sort: { score: -1 },
         limit: 10,
     };
-  const cursor = scoreCollection.find(query, options);
+  const cursor = scoreDatabase.find(query, options);
   return cursor.toArray();
 }
 
