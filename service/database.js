@@ -38,6 +38,14 @@ async function updateUser(user) {
     await userDatabase.updateOne({userName: user.userName}, { $set: {token: user.token} })
 }
 
+async function setScore(score) {
+    await scoreDatabase.insertOne(score);
+}
+
+// function findScores() {
+//     return userDatabase.findOne
+// }
+
 
 module.exports = {
   findUser,
@@ -45,4 +53,5 @@ module.exports = {
   setUser,
   logoutUser,
   updateUser,
+  setScore,
 };

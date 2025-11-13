@@ -72,8 +72,7 @@ const verifyAuth = async (req, res, next) => {
 };
 
 apiRouter.post('/score', verifyAuth, (req, res) => {
-  updateScores(req.body) || scores;
-  res.send(scores);
+  DB.setScore(req.body);
 });
 
 
