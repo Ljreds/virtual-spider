@@ -72,7 +72,8 @@ const verifyAuth = async (req, res, next) => {
 };
 
 apiRouter.post('/score', verifyAuth, (req, res) => {
-  DB.setScore(req.body);
+  const scores = updateScores(req.body);
+  res.send(scores);
 });
 
 
@@ -112,37 +113,15 @@ async function findUser(field, name) {
   return DB.findUser(name);
 }
 
-async function updateScores(newScore) {
-
-  let found = false;
-
-  const userScore = scores.find((u) => u.userName === newScore.userName);
+async function updateScores(newScore){
+  const userScore = DB.getScore(newScore.userName);
 
   if(userScore && userScore.score > newScore.score) {
-    return scores;
+    return DB.findScores();
   }
   
-  scores = scores.filter(u => u.userName !== newScore.userName)
-
-  for (const [i, prevScore] of scores.entries()) {
-    if (newScore.score > prevScore.score) {
-      scores.splice(i, 0, newScore);
-      found = true;
-      break;
-    }
-  }
-
-  if (!found) {
-    scores.push(newScore);
-  }
-
-  if (scores.length > 10) {
-    scores.length = 10;
-  }
-
-  highscore.highScore = scores[0].score;
-
-  return scores;
+  DB.addScore(newScore);
+  return DB.findScores();
 }
 
 

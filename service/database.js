@@ -42,9 +42,9 @@ async function setScore(score) {
     await scoreDatabase.insertOne(score);
 }
 
-// function findScores() {
-//     return userDatabase.findOne
-// }
+function getScore(userName) {
+    return scoreDatabase.findOne({userName: userName})
+}
 
 
 module.exports = {
