@@ -1,5 +1,6 @@
 .vscode/
 .DS_Store
 /node_modules
-/service/node_modules
+service/node_modules
+dbConfig.json
 service/dbConfig.json
