@@ -10,6 +10,11 @@ class GameEventNotifier {
   handlers = [];
   event = new EventMessage('No one', 0);
 
+  constructor() {
+    let port = window.location.port;
+    const protocol = window.location.protocol === 'http' ? 'ws' : 'wss';
+  }
+
   broadcastEvent(name, score) {
     const event = new EventMessage(name, score);
     this.receiveEvent(event);
