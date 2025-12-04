@@ -4,6 +4,7 @@ function websocket(httpServer) {
   const socketServer = new WebSocketServer({ server: httpServer });
 
   socketServer.on('connection', (socket) => {
+    console.log("Client connected");
     socket.isAlive = true;
 
     socket.on('message', function message(data) {
@@ -16,8 +17,8 @@ function websocket(httpServer) {
 
     socket.on('pong', () => {
         socket.isAlive = true;
-    })
-  })
+    });
+  });
 
   setInterval(() => {
     socketServer.clients.forEach(function search(client) {
