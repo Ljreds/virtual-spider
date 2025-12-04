@@ -1,4 +1,4 @@
-const { WebSocketServer} = require('wasi');
+const { WebSocketServer} = require('ws');
 
 function websocket(httpServer) {
   const socketServer = new WebSocketServer({ server: httpServer });
@@ -30,4 +30,4 @@ function websocket(httpServer) {
 
 }
 
-module.exports = { web };
+module.exports = { websocket };
