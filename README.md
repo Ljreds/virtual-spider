@@ -97,3 +97,12 @@ For this deliverable I associate the votes with the logged in user. I stored the
 
 - [x] **Stores data in MongoDB** - Working
 - [x] **Use MongoDB to store credentials** - Stores both user and their scores.
+
+## WebSocket deliverable
+
+For this deliverable I used webSocket to update the votes on the frontend in realtime.
+
+- [x] **Backend listens for WebSocket connection** - done!
+- [x] **Frontend makes WebSocket connection** - done!
+- [x] **Data sent over WebSocket connection** - done!
+- [x] **WebSocket data displayed** - Highscore is displayed on every connection when ever it is achieved.
