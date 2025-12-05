@@ -15,7 +15,7 @@ class GameEventNotifier {
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
     this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
 
-    this.socket.onopen = async () => {
+    this.socket.onopen = () => {
       console.log("Connected to WebSocket server");
     };
 
@@ -30,6 +30,7 @@ class GameEventNotifier {
   broadcastEvent(name, score) {
     const event = new EventMessage(name, score);
     this.receiveEvent(event);
+    this.socket.send(JSON.stringify(event));
   }
 
   addHandler(handler) {

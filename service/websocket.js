@@ -1,4 +1,4 @@
-const { WebSocketServer} = require('ws');
+const { WebSocketServer, WebSocket} = require('ws');
 
 function websocket(httpServer) {
   const socketServer = new WebSocketServer({ server: httpServer });
